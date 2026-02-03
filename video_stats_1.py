@@ -1,4 +1,4 @@
-import requests
+import requests #we got the play list id using this script
 import json
 
 import os
@@ -28,6 +28,22 @@ def get_playlistID():
     
     except requests.exceptions.RequestException as e:
         raise e
+    
 
-if __name__=="__main__":
-    get_playlistID()
+
+def get_videoID(playlistID):
+    base_url = f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={maxResults}&playlistId={playlistID}&key={API_KEY}')
+
+    video_ids = [] # list to store all the video ids retrieved, look at the api page
+    pageToken = None # a parameter in the Youtube Data API document
+
+    try:
+        while True:
+            
+
+    except requests.exceptions.RequestException as e:
+        raise e
+    
+
+
+
