@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# yt_elt
-First DE project- pulling data via youtube API
-=======
-# YT_ELT
+Data Engineering Pipeline Project
 
->>>>>>> ft
+ Pulling youtube data via API. Used Google Cloud, postman, Youtube API, requests library in pyt, vscode studio. 
