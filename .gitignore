@@ -6,3 +6,11 @@ __pycache__/
 
 # Ignore environment file
 .env
+
+#folder generated while using Airflow
+logs/
+
+#temp ignore
+spot_jsoncrack.json
+spot_testing.py
+rough.py

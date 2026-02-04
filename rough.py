@@ -1,12 +1,12 @@
-import requests
-import json
+def ff():
+    l = list(range(20))
 
-import os
-from dotenv import load_dotenv
+    #print(l)
 
-load_dotenv(dotenv_path="./.env")
+    for i in range(0,len(l), 4):
+      yield l[i:i+4]
 
-API_KEY = os.getenv('API_KEY')
-channel_handle = 'MrBeast'  
+res = list(ff())
 
-print(requests.get(f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUX6OQ3DkcsbYNE6H8uQQuVA&key={API_KEY}'))
+res2 = ''.join(*res)
+print(res2)
