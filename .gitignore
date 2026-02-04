@@ -10,6 +10,9 @@ __pycache__/
 #folder generated while using Airflow
 logs/
 
+#ignoring the data for now
+data/
+
 #temp ignore
 spot_jsoncrack.json
 spot_testing.py
