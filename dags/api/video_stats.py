@@ -2,15 +2,19 @@ import requests #we got the play list id using this script
 import json
 from datetime import date
 
-import os
-from dotenv import load_dotenv
+#import os
+#from dotenv import load_dotenv
+#load_dotenv(dotenv_path="./.env")
 
-load_dotenv(dotenv_path="./.env")
+from airflow.decorators import task
+from airflow.models import Variable
 
-API_KEY = os.getenv('API_KEY')
-channel_handle = 'MrBeast'  
+API_KEY = Variable.get('API_KEY')
+channel_handle = Variable.get('CHANNEL_HANDLE')
+maxResults = 50  
 
-def get_playlistID():
+@task
+def get_playlist_id():
 
     try:
         
@@ -33,7 +37,7 @@ def get_playlistID():
     except requests.exceptions.RequestException as e:
         raise e
 
-maxResults = 50  
+@task
 def get_video_ids(playlistID):
 
     base_url = f'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={maxResults}&playlistId={playlistID}&key={API_KEY}'
@@ -65,7 +69,7 @@ def get_video_ids(playlistID):
     except requests.exceptions.RequestException as e:
         raise e
     
-
+@task
 def extract_video_data(video_ids): #input parameter is a list
     
     extracted_data = []
@@ -107,7 +111,8 @@ def extract_video_data(video_ids): #input parameter is a list
 
     except requests.exceptions.RequestException as e:
         raise e
-    
+
+@task    
 def save_to_json(extracted_data):
     file_path = f"./data/YT_data_{date.today()}.json" # Prepares the file path and name using today's date - nothing created yet
 
@@ -116,7 +121,7 @@ def save_to_json(extracted_data):
 
 
 if __name__ == '__main__':
-    playlistID = get_playlistID()
+    playlistID = get_playlist_id()
     video_ids = get_video_ids(playlistID)
     video_data = extract_video_data(video_ids)
     save_to_json(video_data)
