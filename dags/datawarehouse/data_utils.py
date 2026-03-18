@@ -3,17 +3,17 @@
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from psycopg2.extras import RealDictCursor
 
-table = "yt_api"
+table = "yt_api"     # same name for both the staging and core layers, in our case
 
 
-def get_conn_cursor():
+def get_conn_cursor():     # setting up connection and cursor
     hook = PostgresHook(postgres_conn_id="postgres_db_yt_elt", database="elt_db")
     conn = hook.get_conn()
     cur = conn.cursor(cursor_factory=RealDictCursor)
     return conn, cur
 
 
-def close_conn_cursor(conn, cur):
+def close_conn_cursor(conn, cur):    #closing connection and cursor
     cur.close()
     conn.close()
 
@@ -68,7 +68,7 @@ def create_table(schema):
     close_conn_cursor(conn, cur)
 
 
-def get_video_ids(cur, schema):
+def get_video_ids(cur, schema):     #fetch existing video IDs from the table (read-only)- supports dedup/merge logic
 
     cur.execute(f"""SELECT "Video_ID" FROM {schema}.{table};""")
     ids = cur.fetchall()
