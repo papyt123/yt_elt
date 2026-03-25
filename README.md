@@ -4,12 +4,13 @@ An end-to-end ELT pipeline that extracts YouTube channel metadata from the YouTu
 
 ```mermaid
 flowchart LR
-    A[YouTube API] --> B[Python Extraction]
-    B --> C[Raw JSON Data]
-    C --> D[Airflow DAGs]
-    D --> E[PostgreSQL Staging]
-    E --> F[Core Layer]
-    F --> G[Soda / pytest Checks]
+    A[YouTube API] --> B[Python Extraction Scripts]
+    B --> C[Raw JSON Output]
+    C --> D[Airflow Orchestration]
+    D --> E[PostgreSQL Staging Schema]
+    E --> F[Transformation Logic]
+    F --> G[PostgreSQL Core Schema]
+    G --> H[Data Quality Checks]
 ```
 
 ## Overview
