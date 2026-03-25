@@ -2,7 +2,14 @@
 
 An end-to-end ELT pipeline that extracts YouTube channel metadata from the YouTube API, loads raw data into PostgreSQL staging tables, transforms it into core analytical layers, and runs through a containerized Airflow-based workflow with testing and data quality checks.
 
-![Architecture Diagram](./images/architecture.png)
+![Architecture Diagram]
+flowchart LR
+    A[YouTube API] --> B[Python Extraction]
+    B --> C[Raw JSON Data]
+    C --> D[Airflow DAGs]
+    D --> E[PostgreSQL Staging]
+    E --> F[Core Layer]
+    F --> G[Soda / pytest Checks]
 
 ## Overview
 
@@ -118,3 +125,7 @@ YT_ELT/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
+
+## Attribution
+
+This project was developed through hands-on work based on an instructor-guided project by **Matthew Schembri** and is being used as a foundation for continued learning, refinement, and extension.
