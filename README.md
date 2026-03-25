@@ -130,4 +130,4 @@ YT_ELT/
 
 ## Attribution
 
-This project was developed through hands-on work based on an instructor-guided project by **Matthew Schembri** and is being used as a foundation for continued learning, refinement, and extension.
+This project was developed through hands-on work based on an instructor-guided project by Matthew Schembri and is being used as a foundation for continued learning, refinement, and extension.
