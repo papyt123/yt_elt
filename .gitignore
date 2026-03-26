@@ -13,7 +13,7 @@ logs/
 #ignoring the data for now
 data/
 
-#temp ignore
+#local temp files ignore
 spot_jsoncrack.json
 spot_testing.py
 rough.py

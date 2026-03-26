@@ -1,4 +1,4 @@
-# Here we have most functions relating to database conections and operations like creating tables and schemas
+# Below are functions relating to database conections and operations like creating tables and schemas
 
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from psycopg2.extras import RealDictCursor
