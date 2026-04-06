@@ -1,5 +1,5 @@
 # Ignore Python virtual environment
-venv/
+yt_venv/
 
 # Python cache
 __pycache__/
@@ -13,8 +13,13 @@ logs/
 #ignoring the data for now
 data/
 
+# Ignore macOS system files
+.DS_Store
+
+
 #local temp files ignore
 spot_jsoncrack.json
 spot_testing.py
 rough.py
 rough2.py
+
