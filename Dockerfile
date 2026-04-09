@@ -1,0 +1,17 @@
+# Define the Airflow version to use at build time
+ARG AIRFLOW_VERSION=2.9.2
+
+# Define the Python version to use at build time
+ARG PYTHON_VERSION=3.10
+
+# Use the official Apache Airflow image with specified Airflow and Python versions
+FROM apache/airflow:${AIRFLOW_VERSION}-python${PYTHON_VERSION}
+
+# Set the Airflow home directory inside the container
+ENV AIRFLOW_HOME=/opt/airflow
+
+# Copy the Python dependencies file into the container
+COPY requirements.txt /
+
+# Install the specified Airflow version and all dependencies from requirements.txt
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" -r /requirements.txt
